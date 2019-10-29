@@ -1,7 +1,14 @@
 
 body {
 	margin:0pt;
-	width:100vw;
+	width:100%;
+}
+
+.main {
+	margin:10pt;
+	width:100%;
+	font-family:'Century Gothic';
+	font-size:18pt;
 }
 
 header {
@@ -47,7 +54,7 @@ header a {
 	text-align:center;
 }
 
-a.link {
+.link {
 	background-color:#3f7fff;
 	color:#ffffff;
 	font-family:"Century Gothic";
