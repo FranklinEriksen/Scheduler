@@ -40,8 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig', # new
     'RandomAlgoWeb.apps.RandomalgowebConfig', #Frederik
-     'accounts.apps.AccountsConfig', # new
-     'login.apps.LoginConfig', # new
+    'login.apps.LoginConfig', # new
 ]
 
 MIDDLEWARE = [
