@@ -1,0 +1,46 @@
+<!-- Homepage for the website -->
+
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+<head>
+
+<title> SmartSchedule </title>
+<base href="homepage.html">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+<header>
+	<img src="/static/img/logo2.png" alt="SmartSchedule">
+	<a>Sign In</a>
+</header>
+
+<div id="intro" style="width:100%; height:3in; padding:0.5in;">
+	<div class="center" id="welcome">
+		<h1>Welcome to SmartSchedule!</h1>
+		<p>The all-in-one scheduling, organization, and communication app for you and your business!</p>
+	</div>
+</div>
+
+<div id="signup" style='width:100%; height:2in;'>
+	<div class='button-container'>
+		<a class='link center' href='{% url 'signup-employee' %}'>Sign up as an employee</a>
+	</div>
+	<div class='button-container'>
+		<a class='link' href='{% url 'signup-company' %}'>Sign up as a company</a>
+	</div>
+</div>
+
+<div id="signin" style='float:left; width:100%; text-align:center; font-family:"Century Gothic";'>
+	<p>Already have an account? <a style='color:#7fbfff;' href='{% url 'login2' %}'>Sign in here!</a></p>
+</div>
+
+</body>
+
+</html>
