@@ -77,7 +77,6 @@ header a {
 		width:100%
 	}
 }
-
 .calendar {
   width: 98%;
   margin: auto;
@@ -106,4 +105,13 @@ header a {
 
 .date {
   font-size: 16px;
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+a {
+  color: #17a2b8;
 }
