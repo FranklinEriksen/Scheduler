@@ -1,4 +1,4 @@
-
+//none of this shit works. disregard for now
 
 var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 

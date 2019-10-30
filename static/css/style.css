@@ -47,7 +47,11 @@ header a {
 	color:#7f7f7f;
 	width:7in;
 }
-	
+
+form div div{
+	font-size:12pt;
+	margin-left:.5in;
+}
 
 .center {
 	margin: auto;
@@ -71,8 +75,7 @@ header a {
 	text-align:center;
 }
 
-@media screed and (max-width:800px) {
-	
+@media screen and (max-width:800px) {
 	.button-container {
 		width:100%
 	}
