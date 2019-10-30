@@ -1,5 +1,5 @@
-from Day import *
-from User import *
+from RandomAlgoWeb.RandomAlgo.Day import *
+from RandomAlgoWeb.RandomAlgo.User import *
 
 class Listholder:
     def __init__(self, days, users):

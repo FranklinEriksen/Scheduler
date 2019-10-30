@@ -1,7 +1,7 @@
-from UserEnum import *
-from Day import *
-from User import *
-from ListHolder import Listholder
+from RandomAlgoWeb.RandomAlgo.UserEnum import *
+from RandomAlgoWeb.RandomAlgo.User import *
+from RandomAlgoWeb.RandomAlgo.Day import *
+from RandomAlgoWeb.RandomAlgo.ListHolder import Listholder
 import random
 import copy
 
