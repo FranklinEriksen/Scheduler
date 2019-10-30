@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig', # new
     'RandomAlgoWeb.apps.RandomalgowebConfig', #Frederik
     'login.apps.LoginConfig', # new
+    'ourCalendar.apps.CalenderConfig',
 ]
 
 MIDDLEWARE = [
