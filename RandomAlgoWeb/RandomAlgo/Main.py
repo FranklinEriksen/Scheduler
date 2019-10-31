@@ -69,7 +69,7 @@ def createUsersRandom(numberOfUsers):
 
 
 def runUntilCorrect():
-    numberOfDays = 10
+    numberOfDays = 5
     dayBuilds = [1, 1, 1, 1]
     userBuilds = [2, 2, 2, 2]
     numberOfUsers = 8
@@ -96,7 +96,7 @@ def runUntilCorrect():
 def runXTimes():
     correctResults = []
 
-    numberOfDays = 10
+    numberOfDays = 5
 
     dayBuilds = [1, 1, 1, 1]
     userBuilds = [2, 2, 2, 2]

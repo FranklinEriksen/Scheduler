@@ -7,6 +7,8 @@ from django.views import generic
 import RandomAlgoWeb.RandomAlgo.Main as algo
 from django.http import HttpResponse
 import datetime
+from ourCalendar.views import insert_test
+
 
 class FrederikTest(generic.CreateView):
     test = algo.runUntilCorrect()
@@ -24,5 +26,6 @@ def current_datetime(request):
         html += "<br />"
     html += "</body></html>"
 
+    insert_test(test)
 
     return HttpResponse(html)
