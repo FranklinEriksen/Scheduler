@@ -27,4 +27,5 @@ urlpatterns = [
     path('algo/', include('RandomAlgoWeb.urls')),
     path('ourCalendar/', include('ourCalendar.urls')),
     path('', TemplateView.as_view(template_name='homepage.html'), name='home'),
+
 ]
