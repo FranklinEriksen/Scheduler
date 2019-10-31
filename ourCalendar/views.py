@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import generic
 from django.utils.safestring import mark_safe
+from django.utils.dateparse import parse_datetime
+from RandomAlgoWeb.RandomAlgo.Main import runUntilCorrect as algo
+from RandomAlgoWeb.RandomAlgo.ListHolder import Listholder
 
 from .models import *
 from .utils import Calendar
@@ -30,3 +33,19 @@ def get_date(req_day):
         year, month = (int(x) for x in req_day.split('-'))
         return date(year, month, day=1)
     return datetime.today()
+
+def insert_test(listholder):
+
+    for user in listholder.users:
+        for day in user.workDays:
+            Event.objects.create(title=user.ID,
+                                 description=user.job,
+                                 start_time=parse_datetime('2019-10-' + str(day.date) + 'T19:00:00'),
+                                 end_time=parse_datetime('2019-10-' + str(day.date) + 'T19:00:00'))
+
+
+
+    # test = Event.objects.create(title='Frederik',
+    #                             description='Not Sure',
+    #                             start_time=parse_datetime('2019-10-31T19:00:00'),
+    #                             end_time=parse_datetime('2019-10-31T19:00:00'))
