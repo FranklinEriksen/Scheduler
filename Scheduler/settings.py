@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'accounts.apps.AccountsConfig', # new
-     'login.apps.LoginConfig', # new
+    'accounts.apps.AccountsConfig', # new
+    'RandomAlgoWeb.apps.RandomalgowebConfig', #Frederik
+    'login.apps.LoginConfig', # new
 ]
 
 MIDDLEWARE = [
@@ -122,7 +123,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'home'
 STATICFILES_DIRS = (
   os.path.join(BASE_DIR, 'static'),

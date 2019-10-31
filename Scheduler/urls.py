@@ -24,5 +24,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('login/', include('login.urls')), #new
     path('login/', include('django.contrib.auth.urls')),
+    path('algo/', include('RandomAlgoWeb.urls')),
+    
     path('', TemplateView.as_view(template_name='homepage.html'), name='home'),
 ]
