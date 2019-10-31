@@ -24,6 +24,9 @@
 
 <h1>Sign Up</h1>
 
+<!--- IDK WHICH ONE TO USE BELOW. --->
+
+<!---
 <form>
 	Email:<br/>
 	<input type='text' name='username'><br/>
@@ -38,7 +41,13 @@
 	<br/>
 	<input type='submit' class='link'>
 </form>
+--->
 
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
 </div>
 
 </body>
