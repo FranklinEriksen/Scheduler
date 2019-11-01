@@ -30,3 +30,4 @@ class User:
         self.longestChainOfWorkDaysNumber = maxCounter
         return self.longestChainOfWorkDaysNumber
 
+

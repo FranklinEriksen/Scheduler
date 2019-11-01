@@ -5,3 +5,5 @@ class UserEnum(Enum):
     Job3 = 2
     Job4 = 3
 
+    def toString(self):
+        return self.value
