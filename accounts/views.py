@@ -10,6 +10,19 @@ from django.shortcuts import render, redirect
 
 from .models import empInfo
 
+def availability(request):
+    if request.method == 'POST':
+        if request.POST.get('title') and request.POST.get('content'):
+            post=Post()
+            post.title= request.POST.get('title')
+            post.content= request.POST.get('content')
+            post.save()
+
+            return render(request, 'posts/create.html')
+
+        else:
+            return render(request,'posts/create.html')
+
 
 class SignUpComp(generic.CreateView):
     form_class = UserCreationForm
@@ -30,11 +43,3 @@ class Avail(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('Avail')
     template_name = 'availability.html'
-
-def saveinfo(request):
-        print("THIS GOT HITTTT")
-        if request.method == 'submitInfo':
-            if request.POST.get('namebox'):
-                db=empInfo()
-                db.Name= request.submitInfo.get('namebox')
-                db.save()
