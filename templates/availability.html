@@ -1,32 +1,39 @@
 <!DOCTYPE html>
+{% load static %}
 
 <head>
 
 <title>My Availability</title>
 <base href="homepage.html">
-<link rel='stylesheet' href='../static/css/style.css'>
+<link rel='stylesheet' href='/static/css/style.css'>
 <!-- <link rel="stylesheet" href="{% static '/css/style.css' %}"> -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src='../static/script/availability.js'></script>
+<script src='/static/js/availability.js'></script>
 </head>
 
 <body>
 
 <header>
-	<img src="../static/img/logo2.png" alt="SmartSchedule">
+	<img src="/static/img/logo2.png" alt="SmartSchedule">
 	<a href=''>Log Out</a> <!-- TODO: Update this link -->
 </header>
 
 <div class='header2'>
-	<a href=''>My Availability</a> | 
-	<a href=''>My Shifts</a> | 
+	<a href=''>My Availability</a> |
+	<a href=''>My Shifts</a> |
 	<a href=''>Schedule</a>
 </div>
 
 <div class='main'>
 
 <h1>Set your availability</h1>
+
+<form action="" method="submitInfo">
+{% csrf_token %}
+Title: <input type="text" name="namebox"/><br/>
+<input type="submit" value="Send"/>
+</form>
 
 <form>
 	<div id='monday'>
@@ -39,7 +46,7 @@
 			<input type='time' name='monday-end'><br/>
 		</div>
 	</div>
-	
+
 	<div id='tuesday'>
 		<input type='checkbox' name='tuesday' id='tuesday-box'>
 		<label for='tuesday'>Tuesday</label>
@@ -50,7 +57,7 @@
 			<input type='time' name='tuesday-end'><br/>
 		</div>
 	</div>
-	
+
 	<div id='wednesday'>
 		<input type='checkbox' name='wednesday' id='wednesday-box'>
 		<label for='wednesday'>Wednesday</label>
@@ -61,7 +68,7 @@
 			<input type='time' name='wednesday-end'><br/>
 		</div>
 	</div>
-	
+
 	<div id='thursday'>
 		<input type='checkbox' name='thursday' id='thursday-box'>
 		<label for='thursday'>Thursday</label>
@@ -72,7 +79,7 @@
 			<input type='time' name='thursday-end'><br/>
 		</div>
 	</div>
-	
+
 	<div id='friday'>
 		<input type='checkbox' name='friday' id='friday-box'>
 		<label for='friday'>Friday</label>
@@ -83,7 +90,7 @@
 			<input type='time' name='friday-end'><br/>
 		</div>
 	</div>
-	
+
 	<div id='saturday'>
 		<input type='checkbox' name='saturday' id='saturday-box'>
 		<label for='saturday'>Saturday</label>
@@ -94,7 +101,7 @@
 			<input type='time' name='saturday-end'><br/>
 		</div>
 	</div>
-	
+
 	<div id='sunday'>
 		<input type='checkbox' name='sunday' id='sunday-box'>
 		<label for='sunday'>Sunday</label>
@@ -105,7 +112,7 @@
 			<input type='time' name='sunday-end'><br/>
 		</div>
 	</div>
-	
+
 	<br/><br/>
 	<a type='submit' class='link'>Save</a> <!-- TODO: add functionality -->
 	<!-- <a type='submit' class='link'>Save for all weeks</a> <!-- TODO: add functionality -->
