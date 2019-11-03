@@ -23,7 +23,8 @@ def fillDaysWithUsers(days, users):
     for day in days:
         tempUsers = []
         for x in users:
-            tempUsers.append(x)
+            if x.avaibleDays[day.dayNumber]:
+                tempUsers.append(x)
         usersRemaining = True
         while usersRemaining:
             tempUsersAmount = len(tempUsers)
