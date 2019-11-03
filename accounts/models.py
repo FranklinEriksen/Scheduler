@@ -5,8 +5,8 @@ from django.db import models
 #models.py File
 
 class empInfo(models.Model):
-    Name = models.CharField(max_length=300, unique=True)
-    days = models.CharField(max_length=300)
+    Name = models.CharField(max_length=300)
+    days = models.CharField(max_length=300, default = '11111111')
 
 '''
 -name

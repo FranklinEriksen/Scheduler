@@ -30,12 +30,8 @@
 <h1>Set your availability</h1>
 
 <form action = "../submitInfo" method="submitInfo">
-{% csrf_token %}
-Title: <input type="text" name="namebox"/><br/>
-<input type="submit" value="Send"/>
-</form>
+	Name: <input type="text" name="namebox"/><br/>
 
-<form>
 	<div id='monday'>
 		<input type='checkbox' name='monday' id='monday-box'>
 		<label for='monday'>Monday</label>
@@ -114,7 +110,7 @@ Title: <input type="text" name="namebox"/><br/>
 	</div>
 
 	<br/><br/>
-	<input type='submit' class='link'></a> <!-- TODO: add functionality -->
+	<input type="submit" value="Send"/></a> <!-- TODO: add functionality -->
 	<!-- <a type='submit' class='link'>Save for all weeks</a> <!-- TODO: add functionality -->
 </form>
 
