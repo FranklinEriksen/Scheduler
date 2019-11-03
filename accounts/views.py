@@ -11,17 +11,55 @@ from django.shortcuts import render, redirect
 from .models import empInfo
 
 def availability(request):
-    if request.method == 'POST':
-        if request.POST.get('title') and request.POST.get('content'):
-            post=Post()
-            post.title= request.POST.get('title')
-            post.content= request.POST.get('content')
-            post.save()
+    daysString = ''
+    db=empInfo()
 
-            return render(request, 'posts/create.html')
+    if request.method == 'GET':
+        if 'namebox' in request.GET:
+            print(request.GET['namebox'])
+            db.Name = (request.GET['namebox'])
 
+        if 'monday' in request.GET:
+            daysString+='1'
         else:
-            return render(request,'posts/create.html')
+            daysString+='0'
+
+        if 'tuesday' in request.GET:
+            daysString+='1'
+        else:
+            daysString+='0'
+
+        if 'wednesday' in request.GET:
+            daysString+='1'
+        else:
+            daysString+='0'
+
+        if 'thursday' in request.GET:
+            daysString+='1'
+        else:
+            daysString+='0'
+
+        if 'friday' in request.GET:
+            daysString+='1'
+        else:
+            daysString+='0'
+
+        if 'saturday' in request.GET:
+            daysString+='1'
+        else:
+            daysString+='0'
+
+        if 'sunday' in request.GET:
+            daysString+='1'
+        else:
+            daysString+='0'
+
+        db.days = daysString
+        db.save()
+
+        print(daysString)
+
+    return render(request,'../templates/availability.html')
 
 
 class SignUpComp(generic.CreateView):
