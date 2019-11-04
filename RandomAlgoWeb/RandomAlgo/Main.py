@@ -23,7 +23,33 @@ def fillDaysWithUsers(days, users):
     for day in days:
         tempUsers = []
         for x in users:
-            if x.avaibleDays[day.dayNumber]:
+            tempUsers.append(x)
+        usersRemaining = True
+        while usersRemaining:
+            tempUsersAmount = len(tempUsers)
+            tempUser = random.choice(tempUsers)
+
+            if day.doesDayNeedJob(tempUser.job) and tempUser.canUserWorkDay(day):
+                day.addUser(tempUser)
+            tempUsers.remove(tempUser)
+
+            # print(day.numberOfUsersRequired)
+            if day.isDayValid():
+                usersRemaining = False
+            elif len(tempUsers) <= 0:
+                usersRemaining = False
+
+
+    listHolder = Listholder(days, users)
+
+    return listHolder
+
+def fillDaysWithUsersFromDB(days, users):
+
+    for day in days:
+        tempUsers = []
+        for x in users:
+            if list(x.avaibleDays)[day.dayNumber]:
                 tempUsers.append(x)
         usersRemaining = True
         while usersRemaining:
@@ -62,6 +88,16 @@ def createUsersNonRandom(userBuild):
             id = id + 1
     return users
 
+def createUsersNonRandomFromDB(usersFromDB):
+    users = []
+    id = 0
+    for j in usersFromDB:
+        users.append(User(UserEnum(0), id, j.days, j.Name))
+        id = id + 1
+    for user in users:
+        print("name = " + str(user.name))
+    return users
+
 def createUsersRandom(numberOfUsers):
     users = []
     for i in range(numberOfUsers):
@@ -93,6 +129,34 @@ def runUntilCorrect():
     print("It took " + str(count) + " tries")
     return firstFoundSolution
 
+def runUntilCorrectWithUsers(users):
+    numberOfDays = 5
+
+
+    for user in users:
+        print(user.Name)
+
+
+    foundSolution = True
+    firstFoundSolution = Listholder
+    dayBuilds = [len(users)/2, 0, 0, 0]
+    count = 0
+
+    while foundSolution:
+        print(count)
+        dbUsers = createUsersNonRandomFromDB(copy.deepcopy(users))
+        days = createDays(numberOfDays, dayBuilds)
+
+
+        newListHolderTry = fillDaysWithUsersFromDB(days, dbUsers)
+        if areAllDaysValid(newListHolderTry):
+            firstFoundSolution = newListHolderTry
+            foundSolution = False
+        count +=1
+
+    print("It took " + str(count) + " tries")
+    return firstFoundSolution
+
 
 def runXTimes():
     correctResults = []
@@ -112,7 +176,7 @@ def runXTimes():
             correctResults.append(newListHolderTry)
         print(i)
     print("We have " + str(len(correctResults)) + " correct results")
-
-for x in runUntilCorrect().days:
-    print("Day " + str(x.dayNumber) + ", workers are : " + x.usersForTheDayToString())
+#
+# for x in runUntilCorrect().days:
+#     print("Day " + str(x.dayNumber) + ", workers are : " + x.usersForTheDayToString())
 
