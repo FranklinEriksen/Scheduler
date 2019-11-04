@@ -1,9 +1,11 @@
 class User:
-    def __init__(self, job, ID):
+    def __init__(self, job, ID, avaibleDays=None, name=None):
         self.job = job
         self.ID = ID
         self.workDays = []
         self.longestChainOfWorkDaysNumber = 0
+        self.avaibleDays = avaibleDays
+        self.name = name
 
 
     def canUserWorkDay(self, testDay):
@@ -29,4 +31,6 @@ class User:
                 counter = 0
         self.longestChainOfWorkDaysNumber = maxCounter
         return self.longestChainOfWorkDaysNumber
+
+
 

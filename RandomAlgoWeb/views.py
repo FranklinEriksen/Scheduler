@@ -7,7 +7,8 @@ from django.views import generic
 import RandomAlgoWeb.RandomAlgo.Main as algo
 from django.http import HttpResponse
 import datetime
-from ourCalendar.views import insert_test
+from ourCalendar.views import insert_test_DB
+from accounts.models import empInfo
 
 
 class FrederikTest(generic.CreateView):
@@ -17,8 +18,8 @@ class FrederikTest(generic.CreateView):
     template_name = 'signup.html'
 
 def current_datetime(request):
-    test = algo.runUntilCorrect()
-    now = datetime.datetime.now()
+    nytest = list(empInfo.objects.all())
+    test = algo.runUntilCorrectWithUsers(list(empInfo.objects.all()))
     html = "<html><body>"
 
     for x in test.days:
@@ -26,6 +27,6 @@ def current_datetime(request):
         html += "<br />"
     html += "</body></html>"
 
-    insert_test(test)
+    insert_test_DB(test)
 
     return HttpResponse(html)
