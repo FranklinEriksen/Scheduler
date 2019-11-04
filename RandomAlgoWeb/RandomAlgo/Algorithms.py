@@ -15,7 +15,8 @@ def runUntilCorrectWithUsers(users):
     count = 0
 
     while foundSolution:
-        print(count)
+        if count % 100 == 0:
+            print(count)
         dbUsers = createUsersNonRandomFromDB(copy.deepcopy(users))
         days = createDays(numberOfDays, dayBuilds)
 

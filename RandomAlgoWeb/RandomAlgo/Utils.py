@@ -15,7 +15,7 @@ def areAllDaysValid(listHolder):
             result = False
 
     for user in listHolder.users:
-        if user.getLongestChainOfWorkDaysNumber() > 4:
+        if user.getLongestChainOfWorkDaysNumber() > 2:
             result = False
     return result
 
@@ -98,8 +98,6 @@ def createUsersNonRandomFromDB(usersFromDB):
     for j in usersFromDB:
         users.append(User(JobEnum(0), id, j.days, j.Name))
         id = id + 1
-    for user in users:
-        print("name = " + str(user.name))
     return users
 
 
