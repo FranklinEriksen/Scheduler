@@ -1,5 +1,7 @@
 from enum import Enum
-class UserEnum(Enum):
+
+
+class JobEnum(Enum):
     Job1 = 0
     Job2 = 1
     Job3 = 2

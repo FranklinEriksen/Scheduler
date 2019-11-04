@@ -12,8 +12,8 @@ class Day:
                 valid = False
         return valid
 
-    def doesDayNeedJob(self, userEnum):
-        if self.numberOfUsersRequired[userEnum.value] > 0:
+    def doesDayNeedJob(self, jobEnum):
+        if self.numberOfUsersRequired[jobEnum.value] > 0:
             return True
         else:
             return False
