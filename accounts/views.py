@@ -10,6 +10,8 @@ from django.shortcuts import render, redirect
 
 from .models import empInfo
 
+import ourCalendar
+
 def availability(request):
     daysString = ''
     db=empInfo()
@@ -81,3 +83,8 @@ class Avail(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('Avail')
     template_name = 'availability.html'
+
+class viewSched(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('viewSched')
+    template_name = 'ourCalendar/calendar.html'
