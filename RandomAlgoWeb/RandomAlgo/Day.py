@@ -3,7 +3,7 @@ class Day:
         self.numberOfUsersRequired = numberOfUsersRequired
         self.dayNumber = dayNumber
         self.usersForTheDay = []
-        self.date = 11+dayNumber
+        self.date = 11 + dayNumber
 
     def isDayValid(self):
         valid = True
