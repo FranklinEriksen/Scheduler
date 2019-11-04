@@ -49,7 +49,7 @@ def fillDaysWithUsersFromDB(days, users):
     for day in days:
         tempUsers = []
         for x in users:
-            if list(x.avaibleDays)[day.dayNumber]:
+            if list(x.avaibleDays)[day.dayNumber] == "1":
                 tempUsers.append(x)
         usersRemaining = True
         while usersRemaining:

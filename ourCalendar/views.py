@@ -79,13 +79,13 @@ def insert_test(listholder):
                                  end_time=parse_datetime('2019-10-' + str(day.date) + 'T19:00:00'))
 
 def insert_test_DB(listholder):
-
+    Event.objects.all().delete()
     for user in listholder.users:
         for day in user.workDays:
             Event.objects.create(title=str(user.name) + " is working as  " + str(user.job.toString()),
                                  description=user.job,
-                                 start_time=parse_datetime('2019-10-' + str(day.date) + 'T19:00:00'),
-                                 end_time=parse_datetime('2019-10-' + str(day.date) + 'T19:00:00'))
+                                 start_time=parse_datetime('2019-11-' + str(day.date) + 'T19:00:00'),
+                                 end_time=parse_datetime('2019-11-' + str(day.date) + 'T19:00:00'))
 
     # test = Event.objects.create(title='Frederik',
     #                             description='Not Sure',
