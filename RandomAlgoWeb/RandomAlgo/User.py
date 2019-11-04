@@ -7,7 +7,6 @@ class User:
         self.avaibleDays = avaibleDays
         self.name = name
 
-
     def canUserWorkDay(self, testDay):
         if len(self.workDays) != 0:
             for day in self.workDays:
@@ -18,12 +17,11 @@ class User:
     def addDay(self, day):
         self.workDays.append(day)
 
-
     def getLongestChainOfWorkDaysNumber(self):
         maxCounter = 0
         counter = 0
-        for i in range(len(self.workDays)-1):
-            if self.workDays[i].getDayNumber() == (self.workDays[i+1].getDayNumber() - 1):
+        for i in range(len(self.workDays) - 1):
+            if self.workDays[i].getDayNumber() == (self.workDays[i + 1].getDayNumber() - 1):
                 counter = counter + 1
                 if counter > maxCounter:
                     maxCounter = counter
@@ -31,6 +29,3 @@ class User:
                 counter = 0
         self.longestChainOfWorkDaysNumber = maxCounter
         return self.longestChainOfWorkDaysNumber
-
-
-
