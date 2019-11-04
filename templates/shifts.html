@@ -8,6 +8,20 @@
 <!-- <link rel="stylesheet" href="{% static '/css/style.css' %}"> -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+
+var days = {{ shift_bit_string }};
+
+for (int i = 0; i < 7; i++){
+	var d = days.charAt(i);
+	if (d == '1'){
+		getElementById('d' + d).innerHTML = 'Yes';
+	} else {
+		getElementById('d' + d).innerHTML = 'No';
+	}
+}
+
+</script>
 
 </head>
 
@@ -26,7 +40,15 @@
 
 <div class='main'>
 
-
+<table id='shift-display'>
+	<tr> <th>Monday</th> <th id='d0'>No</th> </tr>
+	<tr> <th>Tuesday</th> <th id='d1'>No</th> </tr>
+	<tr> <th>Wednesday</th> <th id='d2'>No</th> </tr>
+	<tr> <th>Thursday</th> <th id='d3'>No</th> </tr>
+	<tr> <th>Friday</th> <th id='d4'>No</th> </tr>
+	<tr> <th>Saturday</th> <th id='d5'>No</th> </tr>
+	<tr> <th>Sunday</th> <th id='d6'>No</th> </tr>
+</table>
 
 </div>
 </body>
