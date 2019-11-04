@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 import calendar
 from django.utils.dateparse import parse_datetime
-from RandomAlgoWeb.RandomAlgo.Main import runUntilCorrect as algo
+from RandomAlgoWeb.RandomAlgo.Algorithms import runUntilCorrect as algo
 from RandomAlgoWeb.RandomAlgo.ListHolder import Listholder
 
 from .models import *
