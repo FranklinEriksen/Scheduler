@@ -24,6 +24,10 @@ header img {
 	height:90%;
 }
 
+a {
+	text-decoration:none;
+}
+
 header a {
 	float:right;
 	padding:20px;
