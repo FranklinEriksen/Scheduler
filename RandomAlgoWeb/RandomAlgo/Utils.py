@@ -15,7 +15,7 @@ def areAllDaysValid(listHolder):
             result = False
 
     for user in listHolder.users:
-        if user.getLongestChainOfWorkDaysNumber() > 2:
+        if user.getLongestChainOfWorkDaysNumber() > 4:
             result = False
     return result
 

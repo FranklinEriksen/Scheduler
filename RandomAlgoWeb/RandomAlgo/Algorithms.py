@@ -3,6 +3,7 @@ import copy
 from RandomAlgoWeb.RandomAlgo.ListHolder import Listholder
 from RandomAlgoWeb.RandomAlgo.Utils import createUsersNonRandomFromDB, createDays, fillDaysWithUsersFromDB, \
     areAllDaysValid, createUsersNonRandom, fillDaysWithUsers
+import math
 
 
 # This method runs until it finds a valid schedule, based on the users it gets from the argument.
@@ -11,7 +12,7 @@ def runUntilCorrectWithUsers(users):
 
     foundSolution = True
     firstFoundSolution = Listholder
-    dayBuilds = [len(users) / 2, 0, 0, 0]
+    dayBuilds = [math.floor(len(users)) / 2, 0, 0, 0]
     count = 0
 
     while foundSolution:
