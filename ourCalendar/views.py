@@ -5,7 +5,7 @@ from django.views import generic
 from django.utils.safestring import mark_safe
 import calendar
 from django.utils.dateparse import parse_datetime
-
+from RandomAlgoWeb.models import *
 from .models import *
 from .forms import *
 from .utils import Calendar
@@ -16,6 +16,9 @@ class CalendarView(generic.ListView):
     template_name = 'ourCalendar/calendar.html'
 
     def get_context_data(self, **kwargs):
+        insertOnlyNameIntoCalendar(str(self.request.user))
+        # insertAllIntoCalendar()
+        print((self.request.user))
         context = super().get_context_data(**kwargs)
 
         d = get_date(self.request.GET.get('month', None))
@@ -29,6 +32,7 @@ class CalendarView(generic.ListView):
         # Call the formatmonth method, which returns our ourCalendar as a table
         html_cal = cal.formatmonth(withyear=True)
         context['ourCalendar'] = mark_safe(html_cal)
+
         return context
 
 
@@ -68,25 +72,22 @@ def next_month(d):
     return month
 
 
-def insert_test(listHolder):
-    for user in listHolder.users:
-        for day in user.workDays:
-            Event.objects.create(title=str(user.ID) + " is working as  " + str(user.job.toString()),
-                                 description=user.job,
-                                 start_time=parse_datetime('2019-10-' + str(day.date) + 'T19:00:00'),
-                                 end_time=parse_datetime('2019-10-' + str(day.date) + 'T19:00:00'))
-
-
-def insert_test_DB(listHolder):
+def insertAllIntoCalendar():
     Event.objects.all().delete()
-    for user in listHolder.users:
-        for day in user.workDays:
-            Event.objects.create(title=str(user.name) + " is working as  " + str(user.job.toString()),
-                                 description=user.job,
-                                 start_time=parse_datetime('2019-11-' + str(day.date) + 'T19:00:00'),
-                                 end_time=parse_datetime('2019-11-' + str(day.date) + 'T19:00:00'))
+    for x in CalculatedCalendar.objects.all():
+        Event.objects.create(title=x.title,
+                             description=x.description,
+                             start_time=x.start_time,
+                             end_time=x.end_time,
+                             name=x.name)
 
-    # test = Event.objects.create(title='Frederik',
-    #                             description='Not Sure',
-    #                             start_time=parse_datetime('2019-10-31T19:00:00'),
-    #                             end_time=parse_datetime('2019-10-31T19:00:00'))
+
+def insertOnlyNameIntoCalendar(name):
+    Event.objects.all().delete()
+    for x in CalculatedCalendar.objects.all():
+        if str(x.name) == name:
+            Event.objects.create(title=x.title,
+                                 description=x.description,
+                                 start_time=x.start_time,
+                                 end_time=x.end_time,
+                                 name=x.name)
