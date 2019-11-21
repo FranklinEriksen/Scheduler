@@ -19,7 +19,7 @@ def runUntilCorrectWithUsers(users):
         if count % 100 == 0:
             print(count)
         dbUsers = createUsersNonRandomFromDB(copy.deepcopy(users))
-        days = createDays(numberOfDays, dayBuilds)
+        days = createDays(numberOfDays, dayBuilds, math.floor(len(users)) / 5)
 
         newListHolderTry = fillDaysWithUsersFromDB(days, dbUsers)
         if areAllDaysValid(newListHolderTry):

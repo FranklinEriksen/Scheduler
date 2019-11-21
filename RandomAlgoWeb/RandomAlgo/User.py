@@ -1,11 +1,12 @@
 class User:
-    def __init__(self, job, ID, avaibleDays=None, name=None):
+    def __init__(self, job, ID, availableDays=None, name=None, availableHours=None):
         self.job = job
         self.ID = ID
         self.workDays = []
         self.longestChainOfWorkDaysNumber = 0
-        self.avaibleDays = avaibleDays
+        self.availableDays = availableDays
         self.name = name
+        self.availableHours = availableHours
 
     def canUserWorkDay(self, testDay):
         if len(self.workDays) != 0:
@@ -13,6 +14,14 @@ class User:
                 if day.getDayNumber() == testDay.getDayNumber():
                     return False
         return True
+
+    def canUserWorkHourSlotOnDay(self, dayNumber, startHour, endHour):
+        theDay = self.availableHours[dayNumber]
+        for x in range(startHour, endHour):
+            if theDay[x] != "1":
+                return False
+        return True
+
 
     def addDay(self, day):
         self.workDays.append(day)

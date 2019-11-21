@@ -57,8 +57,9 @@ def fillDaysWithUsersFromDB(days, users):
         while usersRemaining:
             tempUser = random.choice(tempUsers)
 
-            if day.doesDayNeedJob(tempUser.job) and tempUser.canUserWorkDay(day):
-                day.addUser(tempUser)
+            dayNeedsOfUser = day.doesDayNeedUsersHours(tempUser)
+            if day.doesDayNeedJob(tempUser.job) and tempUser.canUserWorkDay(day) and dayNeedsOfUser[0]:
+                day.addUser(tempUser, dayNeedsOfUser[1], dayNeedsOfUser[2])
             tempUsers.remove(tempUser)
 
             # print(day.numberOfUsersRequired)
@@ -73,10 +74,10 @@ def fillDaysWithUsersFromDB(days, users):
 
 
 # Creates a list of days, each with copy of how many employees it needs for the day.
-def createDays(numberOfDays, dayBuilds):
+def createDays(numberOfDays, dayBuilds, usersPerHour=0):
     days = []
     for i in range(numberOfDays):
-        days.append(Day(i, copy.deepcopy(dayBuilds)))
+        days.append(Day(i, copy.deepcopy(dayBuilds), usersPerHour))
     return days
 
 
