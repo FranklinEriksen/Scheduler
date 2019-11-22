@@ -16,8 +16,8 @@ class CalendarView(generic.ListView):
     template_name = 'ourCalendar/calendar.html'
 
     def get_context_data(self, **kwargs):
-        insertOnlyNameIntoCalendar(str(self.request.user))
-        # insertAllIntoCalendar()
+        # insertOnlyNameIntoCalendar(str(self.request.user))
+        insertAllIntoCalendar()
         print((self.request.user))
         context = super().get_context_data(**kwargs)
 
