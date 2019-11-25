@@ -12,7 +12,10 @@ class User:
             for day in self.workDays:
                 if day.getDayNumber() == testDay.getDayNumber():
                     return False
-        return True
+        for day in self.availableDays:
+            if day.getDayNumber() == testDay.getDayNumber():
+                return True
+        return False
 
     def addDay(self, day):
         self.workDays.append(day)

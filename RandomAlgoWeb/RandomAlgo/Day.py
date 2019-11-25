@@ -1,9 +1,11 @@
+startDay = 11
+
 class Day:
     def __init__(self, dayNumber, numberOfUsersRequired):
         self.numberOfUsersRequired = numberOfUsersRequired
         self.dayNumber = dayNumber
         self.usersForTheDay = []
-        self.date = 11 + dayNumber
+        self.date = startDay + dayNumber
 
     def isDayValid(self):
         valid = True
