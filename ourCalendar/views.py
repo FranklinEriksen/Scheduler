@@ -17,7 +17,7 @@ class CalendarView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         # insertOnlyNameIntoCalendar(str(self.request.user))
-        insertAllIntoCalendar()
+        # insertAllIntoCalendar()
         print((self.request.user))
         context = super().get_context_data(**kwargs)
 
