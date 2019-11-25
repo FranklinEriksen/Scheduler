@@ -1,34 +1,9 @@
-<!DOCTYPE html>
-{% load static %}
+{% extends "employee-base.html" %}
 
-<head>
+{% block title %}My Availability{% endblock %}
 
-<title>My Availability</title>
-<base href="homepage.html">
-<link rel='stylesheet' href='/static/css/style.css'>
-<!-- <link rel="stylesheet" href="{% static '/css/style.css' %}"> -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src='/static/js/availability.js'></script>
-</head>
-
-<body>
-
-<header>
-	<img src="/static/img/logo2.png" alt="SmartSchedule">
-	<a href=''>Log Out</a> <!-- TODO: Update this link -->
-</header>
-
-<div class='header2'>
-	<a href='{% url 'avail' %}'>My Availability</a>  |
-	<a href=''>My Shifts</a>  |
-	<a href='{% url 'ourCalendar:ourCalendar2'%}'>Schedule</a>
-</div>
-
-<div class='main'>
-
+{% block mainbody %}
 <h1>Set your availability</h1>
-
 <form action = "../submitInfo" method="submitInfo">
 	Name: <input type="text" name="namebox"/><br/>
 
@@ -110,10 +85,7 @@
 	</div>
 
 	<br/><br/>
-	<input type="submit" value="Send"/></a> <!-- TODO: add functionality -->
+	<input type="submit" value="Send" class="link">Save</input> <!-- TODO: add functionality -->
 	<!-- <a type='submit' class='link'>Save for all weeks</a> <!-- TODO: add functionality -->
 </form>
-
-</div>
-
-</body>
+{% endblock %}

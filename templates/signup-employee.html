@@ -1,55 +1,11 @@
-<!-- employee signup page -->
+{% extends "base-site.html" %}
 
-<!DOCTYPE html>
-{% load static %}
-<html>
-<head>
+{% block title %}Sign Up As an Employee{% endblock %}
 
-<title>SmartSchedule Sign Up</title>
-<base href='homepage.html'>
-<link rel='stylesheet' href="{% static '/css/style.css' %}">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-
-<body>
-
-<header>
-	<img src="/static/img/logo2.png" alt="SmartSchedule">
-	<a>Sign In</a>
-</header>
-
-<div class='main'>
-
-<h1>Sign Up</h1>
-
-<!--- IDK WHICH ONE TO USE BELOW. --->
-
-<!---
-<form>
-	Email:<br/>
-	<input type='text' name='username'><br/>
-	First Name:<br/>
-	<input type='text' name='firstname'><br/>
-	Last Name:<br/>
-	<input type='text' name='lastname'><br/>
-	Password:<br/>
-	<input type='password' name='password'><br/>
-	Confirm Password:<br/>
-	<input type='password' name='confirm-password'><br/>
-	<br/>
-	<input type='submit' class='link'>
-</form>
---->
-
+{% block mainbody %}
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
-  <button type="submit">Login</button>
+  <a type='submit' class='link'>Log In</button>
 </form>
-</div>
-
-</body>
-
-</html>
+{% endblock %}
