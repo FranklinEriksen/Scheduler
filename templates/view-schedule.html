@@ -1,26 +1,39 @@
-{% extends "employee-base.html" %}
 
-{% block title %}View Schedule{% endblock %}
+<!DOCTYPE html>
+{% load static %}
 
-{% block mainbody %}
-<h1>Schedule</h1>
+<head>
 
-<table class='weekcalendar'>
-	<tr>
-		{% for day in days %}
-		<th>{{ day.name }}</th>
-		{% endfor %}
-	</tr>
-	<tr>
-		{% for day in days %}
-		<th>
-			<ul>
-				{% for e in day.employees %}
-				<li>{{ e }}</li>
-				{% endfor %}
-			</ul>
-		</th>
-	</tr>
-</table>
-<!-- TO DO: Django templating to display all variables properly -->
-{% endblock %}
+<title>Schedule</title>
+<base href="homepage.html">
+<link rel='stylesheet' href='/static/css/style.css'>
+<!-- <link rel="stylesheet" href="{% static '/css/style.css' %}"> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+<header>
+	<img src="/static/img/logo2.png" alt="SmartSchedule">
+	<a href=''>Log Out</a> <!-- TODO: Update this link -->
+</header>
+
+<div class='header2'>
+	<a href='{% url 'avail' %}'>My Availability</a>  |
+	<a href=''>My Shifts</a>  |
+	<a href='{% url 'ourCalendar:ourCalendar2'%}'>Schedule</a>
+</div>
+
+<div class='main'>
+
+<center>Welcome</center>
+<center>Account and Job information can be found below</center>
+
+
+
+</div>
+</body>
+</html>
+
