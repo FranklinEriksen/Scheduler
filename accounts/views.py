@@ -113,8 +113,7 @@ class ViewSchedEmp(generic.CreateView):
     template_name = 'view-schedule.html'
 
     def get_context_data(self, **kwargs):
-        object = empInfo.objects.all().filter(Name = "Richard")
-        Name = object.Name
+        Name = "Name will go here"
         print("HERE IS THE NAME", Name)
         context= {
             'Name': Name,
