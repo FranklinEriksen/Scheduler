@@ -1,9 +1,12 @@
-{% extends base-site.html %}
+{% extends "base-site.html" %}
+
+{% load static %}
 
 {% block title %}SmartSchedule{% endblock %}
 
 {% block headerlinks %}
-	<a href='__'>Log In</a> <!-- add log in link -->
+
+	<a href={% url 'login' %}>Log In</a> <!-- add log in link -->
 {% endblock %}
 
 {% block mainbody %}
@@ -11,6 +14,8 @@
 		<div class="center" id="welcome">
 			<h1>Welcome to SmartSchedule!</h1>
 			<p>The all-in-one scheduling, organization, and communication app for you and your business!</p>
+			<link rel="stylesheet" href="{% static '/css/style.css' %}">
+
 		</div>
 	</div>
 
@@ -76,4 +81,3 @@
 </html>
 
 -->
-

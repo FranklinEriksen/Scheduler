@@ -13,7 +13,7 @@ from .models import empInfo
 import ourCalendar
 
 def getHours(startTime, endTime):
-    
+
     if startTime.isnumeric() == False or endTime.isnumeric() == False:
         return "000000000000000000000000"
 
@@ -111,6 +111,14 @@ class ViewSchedEmp(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('ViewSched-employee')
     template_name = 'view-schedule.html'
+
+    def get_context_data(self, **kwargs):
+        Name = "Name will go here"
+        print("HERE IS THE NAME", Name)
+        context= {
+            'Name': Name,
+            }
+        return context
 
 class Avail(generic.CreateView):
     form_class = UserCreationForm
