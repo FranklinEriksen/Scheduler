@@ -186,8 +186,8 @@ class myAccount(generic.CreateView):
     template_name = 'myaccount.html'
 
     def get_context_data(self, **kwargs):
-        firstname = "FIRSTNAME"
-        lastname = "LASTNAME"
+        firstname = self.request.user.first_name
+        lastname = self.request.user.last_name
         role = "ROLE"
         context= {
             'firstname': firstname,
