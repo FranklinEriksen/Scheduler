@@ -1,11 +1,11 @@
 from django.db import models
-from django.db.models import CharField, Model
 
 #models.py File
-
-
-class empInfo(models.Model):
+class User(models.Model):
     Name = models.CharField(max_length=300)
+    pwhash = models.IntegerField()
+
+class empInfo(User):
     days = models.CharField(max_length=300, default = '11111111')
 
     #These are all strings, 24 bit binary string. Represents which hours of the day a person will be working
@@ -17,6 +17,11 @@ class empInfo(models.Model):
     fri = models.CharField(max_length=24, default = '000000000000000000000000')
     sat = models.CharField(max_length=24, default = '000000000000000000000000')
     sun = models.CharField(max_length=24, default = '000000000000000000000000')
+
+class Company(User):
+    company_name = models.CharField()
+    location = models.TextField()
+
 
 '''
 -name
