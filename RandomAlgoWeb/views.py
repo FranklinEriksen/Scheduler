@@ -19,7 +19,7 @@ def run_Algorithm(request):
     html = "<html><body>"
     for x in test.days:
         html += "Day " + str(x.dayNumber) + ", workers are : " + x.usersForTheDayToString()
-        html += "<br />"
+        html += "<br/>"
     html += "</body></html>"
 
     insert_test_DB(test)
@@ -36,3 +36,4 @@ def insert_test_DB(listHolder):
                                               start_time=parse_datetime('2019-11-' + str(day.date) + 'T19:00:00'),
                                               end_time=parse_datetime('2019-11-' + str(day.date) + 'T19:00:00'),
                                               name=str(user.name))
+
