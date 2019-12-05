@@ -9,10 +9,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
 from .models import empInfo
+from .models import currentUser
 from RandomAlgoWeb.models import Shift as Shift
 
 import ourCalendar
-
 
 days = [
     'Monday',
@@ -43,13 +43,29 @@ def getHours(startTime, endTime):
     return str
 
 def trylogin(request):
-    return render(request,'myaccount.html')
+
+    if request.method == 'GET':
+        inputtedName = request.GET['username']
+        try:
+            dbObject = empInfo.objects.get(Username = inputtedName)
+        except:
+            return render(request,'loginNew.html')
+        if dbObject.Password == request.GET['password']:
+            currUsername = inputtedName
+            db = currentUser()
+            db.Username = inputtedName
+            db.save()
+            return render(request,'myaccount.html')
+
+    return render(request,'loginNew.html')
+
 
 def trysignupEmp(request):
     db = empInfo()
 
     if request.method == 'GET':
-        db.Name = request.GET['firstname'] + request.GET['lastname']
+        db.Name = request.GET['firstname'] + " " + request.GET['lastname']
+        db.Username = request.GET['username']
         db.Firstname = request.GET['firstname']
         db.Lastname = request.GET['lastname']
         db.Email = request.GET['email']
@@ -63,13 +79,14 @@ def trysignupEmp(request):
 def availability(request):
     #this will create a new database entry
     daysString = ''
-    db=empInfo() # new data base instance
+    currUserName = currentUser.objects.latest('currentUsername').currentUsername
+    db = empInfo.objects.get(Username = currUserName)
 
     #request.get is a dictionary
     if request.method == 'GET':
         if 'namebox' in request.GET: #namebox will only be in the request if there was text inside of it
             print(request.GET['namebox']) #for testing purposes, we print the name here
-            db.Name = (request.GET['namebox']) #set the correct field in the database
+            #db.Name = (request.GET['namebox']) #set the correct field in the database
 
         #Now, for each day of the week, add the number 1 if the person is working on that particular day
         #Will end up with a binary corresponding to the days
@@ -198,8 +215,9 @@ class myAccount(generic.CreateView):
     template_name = 'myaccount.html'
 
     def get_context_data(self, **kwargs):
-        firstname = "FIRSTNAME"
-        lastname = "LASTNAME"
+        print("HERE IS THE CURRENT USERNMAE: ", )
+        firstname = currentUser.objects.latest('currentUsername').currentUsername
+        lastname = ''
         role = "ROLE"
         context= {
             'firstname': firstname,

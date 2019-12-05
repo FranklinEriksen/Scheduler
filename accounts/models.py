@@ -9,6 +9,9 @@ class empInfo(models.Model):
     Name = models.CharField(max_length=300, default='')
     Firstname = models.CharField(max_length=300, default='')
     Lastname = models.CharField(max_length=300, default='')
+    Password = models.CharField(max_length=300, default='')
+    Email = models.CharField(max_length=300, default='')
+    Username = models.CharField(max_length=300, default='')
 
     days = models.CharField(max_length=300, default = '11111111')
 
@@ -21,6 +24,9 @@ class empInfo(models.Model):
     fri = models.CharField(max_length=24, default = '000000000000000000000000')
     sat = models.CharField(max_length=24, default = '000000000000000000000000')
     sun = models.CharField(max_length=24, default = '000000000000000000000000')
+
+class currentUser(models.Model):
+    currentUsername = models.CharField(max_length=300, default='')
 
 # class Company(User):
 #     Companyname = models.CharField(max_length=300, default='')
