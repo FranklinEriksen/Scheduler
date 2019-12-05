@@ -1,0 +1,25 @@
+{% extends 'base-site.html' %}
+
+{% block title %}Sign Up As an Employee{% endblock %}
+
+{% block mainbody %}
+<center>
+<h1>Sign up as an employee</h1>
+<form action = "../trysignupEmp" method="trysignupEmp">
+  Firstname:<br/>
+  <input type='text' name='firstname'><br/>
+  Lastname:<br/>
+  <input type='text' name='lastname'><br/>
+	Email:<br/>
+	<input type='text' name='email'><br/>
+	Company Name:<br/>
+	<input type='text' name='companyname'><br/>
+	Password:<br/>
+	<input type='password' name='password'><br/>
+	Confirm Password:<br/>
+	<input type='password' name='confirm-password'><br/>
+	<br/>
+	<input type='submit' value ='sign up' class='link'></input>
+</form>
+</center>
+{% endblock %}

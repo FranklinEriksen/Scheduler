@@ -45,6 +45,20 @@ def getHours(startTime, endTime):
 def trylogin(request):
     return render(request,'myaccount.html')
 
+def trysignupEmp(request):
+    db = empInfo()
+
+    if request.method == 'GET':
+        db.Name = request.GET['firstname'] + request.GET['lastname']
+        db.Firstname = request.GET['firstname']
+        db.Lastname = request.GET['lastname']
+        db.Email = request.GET['email']
+        db.Companyname = request.GET['companyname']
+        db.Password = request.GET['password']
+        db.save()
+
+    return render(request,'myaccount.html')
+
 
 def availability(request):
     #this will create a new database entry
@@ -215,5 +229,7 @@ class viewschedule(generic.CreateView):
             'working': working
         }
 
-
-
+class signupEmpNew(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('signupEmpNew')
+    template_name = 'signupEmpNew.html'
