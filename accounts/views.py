@@ -9,8 +9,20 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
 from .models import empInfo
+from RandomAlgoWeb.models import Shift as Shift
 
 import ourCalendar
+
+
+days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+]
 
 def getHours(startTime, endTime):
 
@@ -31,13 +43,24 @@ def getHours(startTime, endTime):
     return str
 
 def trylogin(request):
-    return render(request,'myaccount.html')
+    db = empInfo()
+
+    if request.method == 'GET':
+        inputtedName = request.GET['username']
+        dbObject = empInfo.objects.get(Username = inputtedName)
+        print("HERE IS THE THING", dbObject)
+        if dbObject.Password == request.GET['password']:
+            return render(request,'myaccount.html')
+
+    return render(request,'loginNew.html')
+
 
 def trysignupEmp(request):
     db = empInfo()
 
     if request.method == 'GET':
-        db.Name = request.GET['firstname'] + request.GET['lastname']
+        db.Name = request.GET['firstname'] + " " + request.GET['lastname']
+        db.Username = request.GET['username']
         db.Firstname = request.GET['firstname']
         db.Lastname = request.GET['lastname']
         db.Email = request.GET['email']
@@ -200,6 +223,22 @@ class viewschedule(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('viewschedule')
     template_name = 'view-schedule.html'
+
+    def get_context_data(self, **kwargs):
+        working = []
+        for i in range(7):
+            working.append([])
+            query = Shift.objects.filter(day=0)
+            for q in query:
+                working[i].append({
+                    'name': q.name,
+                    'start': q.start_time,
+                    'end': q.end_time
+                })
+        context = {
+            'days': days,
+            'working': working
+        }
 
 class signupEmpNew(generic.CreateView):
     form_class = UserCreationForm

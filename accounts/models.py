@@ -9,6 +9,9 @@ class empInfo(models.Model):
     Name = models.CharField(max_length=300, default='')
     Firstname = models.CharField(max_length=300, default='')
     Lastname = models.CharField(max_length=300, default='')
+    Password = models.CharField(max_length=300, default='')
+    Email = models.CharField(max_length=300, default='')
+    Username = models.CharField(max_length=300, default='')
 
     days = models.CharField(max_length=300, default = '11111111')
 
