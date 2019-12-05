@@ -1,17 +1,14 @@
 from django.db import models
-from django.db.models import CharField, Model
 
 #models.py File
+class User(models.Model):
+    Password = models.IntegerField()
+    Email = models.CharField(max_length=300, default='')
 
-
-class empInfo(models.Model):
+class empInfo(User):
     Name = models.CharField(max_length=300, default='')
     Firstname = models.CharField(max_length=300, default='')
     Lastname = models.CharField(max_length=300, default='')
-    Email = models.CharField(max_length=300, default='')
-    Companyname = models.CharField(max_length=300, default='')
-
-    Password = models.CharField(max_length=300, default = '')
 
     days = models.CharField(max_length=300, default = '11111111')
 
@@ -24,6 +21,11 @@ class empInfo(models.Model):
     fri = models.CharField(max_length=24, default = '000000000000000000000000')
     sat = models.CharField(max_length=24, default = '000000000000000000000000')
     sun = models.CharField(max_length=24, default = '000000000000000000000000')
+
+class Company(User):
+    Companyname = models.CharField(max_length=300, default='')
+    location = models.TextField()
+
 
 '''
 -name
