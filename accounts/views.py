@@ -52,9 +52,7 @@ def trylogin(request):
             return render(request,'loginNew.html')
         if dbObject.Password == request.GET['password']:
             currUsername = inputtedName
-            db = currentUser()
-            db.Username = inputtedName
-            db.save()
+            currentUser.objects.create(currentUsername=currUsername)
             return redirect('myAccount')
 
     return render(request,'loginNew.html')

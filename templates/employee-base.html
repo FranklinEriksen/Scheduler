@@ -10,7 +10,8 @@
 	<nav>
 		<a href="{% url 'myAccount' %}">My Account</a> |
 		<a href="{% url 'avail' %}">My Availability</a> |
-		<a href="{% url 'ourCalendar:ourCalendar2'%}">Schedule</a> <!-- change this to send view-schedule.html -->
+		<a href="{% url 'ourCalendar:ourCalendar2'%}">Schedule</a> | <!-- change this to send view-schedule.html -->
+        <a href="{% url 'ourCalendar:singleUser'%}">Schedule for logged in user</a> <!-- change this to send view-schedule.html -->
 	</nav>
 {% endblock %}
 

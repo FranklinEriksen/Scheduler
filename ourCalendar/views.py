@@ -10,6 +10,8 @@ from .models import *
 from .forms import *
 from .utils import Calendar
 
+from accounts.models import currentUser
+
 
 class CalendarView(generic.ListView):
     model = Event
@@ -19,6 +21,31 @@ class CalendarView(generic.ListView):
         # insertOnlyNameIntoCalendar(str(self.request.user))
         insertAllIntoCalendar()
         print((self.request.user))
+        context = super().get_context_data(**kwargs)
+
+        d = get_date(self.request.GET.get('month', None))
+
+        # Instantiate our ourCalendar class with today's year and date
+        cal = Calendar(d.year, d.month)
+
+        context['prev_month'] = prev_month(d)
+        context['next_month'] = next_month(d)
+
+        # Call the formatmonth method, which returns our ourCalendar as a table
+        html_cal = cal.formatmonth(withyear=True)
+        context['ourCalendar'] = mark_safe(html_cal)
+
+        return context
+
+class CalendarViewSingleUser(generic.ListView):
+    model = Event
+    template_name = 'ourCalendar/calendar.html'
+
+    def get_context_data(self, **kwargs):
+        user = currentUser.objects.latest('currentUsername').currentUsername
+        insertOnlyNameIntoCalendar(user)
+        # insertAllIntoCalendar()
+        # print((self.request.user))
         context = super().get_context_data(**kwargs)
 
         d = get_date(self.request.GET.get('month', None))
