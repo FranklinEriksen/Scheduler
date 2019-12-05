@@ -14,7 +14,6 @@ from RandomAlgoWeb.models import Shift as Shift
 
 import ourCalendar
 
-
 days = [
     'Monday',
     'Tuesday',
@@ -53,6 +52,9 @@ def trylogin(request):
             return render(request,'loginNew.html')
         if dbObject.Password == request.GET['password']:
             currUsername = inputtedName
+            db = currentUser()
+            db.Username = inputtedName
+            db.save()
             return render(request,'myaccount.html')
 
     return render(request,'loginNew.html')
@@ -212,8 +214,8 @@ class myAccount(generic.CreateView):
     template_name = 'myaccount.html'
 
     def get_context_data(self, **kwargs):
-        print("HERE IS THE CURRENT USERNMAE: ", currUsername)
-        firstname = ''
+        print("HERE IS THE CURRENT USERNMAE: ", )
+        firstname = currentUser.objects.latest('currentUsername').currentUsername
         lastname = ''
         role = "ROLE"
         context= {
