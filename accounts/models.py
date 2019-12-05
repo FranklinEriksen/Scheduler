@@ -1,11 +1,11 @@
 from django.db import models
+#
+# #models.py File
+# class User(models.Model):
+#     Password = models.IntegerField()
+#     Email = models.CharField(max_length=300, default='')
 
-#models.py File
-class User(models.Model):
-    Password = models.IntegerField()
-    Email = models.CharField(max_length=300, default='')
-
-class empInfo(User):
+class empInfo(models.Model):
     Name = models.CharField(max_length=300, default='')
     Firstname = models.CharField(max_length=300, default='')
     Lastname = models.CharField(max_length=300, default='')
@@ -22,9 +22,9 @@ class empInfo(User):
     sat = models.CharField(max_length=24, default = '000000000000000000000000')
     sun = models.CharField(max_length=24, default = '000000000000000000000000')
 
-class Company(User):
-    Companyname = models.CharField(max_length=300, default='')
-    location = models.TextField()
+# class Company(User):
+#     Companyname = models.CharField(max_length=300, default='')
+#     location = models.TextField()
 
 
 '''
