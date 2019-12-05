@@ -14,10 +14,6 @@ import ourCalendar
 
 def getHours(startTime, endTime):
 
-    if startTime.isnumeric() == False or endTime.isnumeric() == False:
-        return "000000000000000000000000"
-
-
     startHour = int(startTime[:2])
     endHour = int(endTime[:2])
 
@@ -50,39 +46,71 @@ def availability(request):
         #Will end up with a binary corresponding to the days
         if 'monday' in request.GET:
             daysString+='1'
-            #returnStr = getHours(request.GET['monday-start'], request.GET['monday-end'] )
-            #db.mon = returnStr
-            #print (returnStr)
+            try:
+                returnStr = getHours(request.GET['monday-start'], request.GET['monday-end'] )
+            except:
+                returnStr = "000000000000000000000000"
+            db.mon = returnStr
         else:
             daysString+='0'
 
         if 'tuesday' in request.GET:
             daysString+='1'
+            try:
+                returnStr = getHours(request.GET['tuesday-start'], request.GET['tuesday-end'] )
+            except:
+                returnStr = "000000000000000000000000"
+            db.tues = returnStr
         else:
             daysString+='0'
 
         if 'wednesday' in request.GET:
             daysString+='1'
+            try:
+                returnStr = getHours(request.GET['wednesday-start'], request.GET['wednesday-end'] )
+            except:
+                returnStr = "000000000000000000000000"
+            db.wed = returnStr
         else:
             daysString+='0'
 
         if 'thursday' in request.GET:
             daysString+='1'
+            try:
+                returnStr = getHours(request.GET['thursday-start'], request.GET['thursday-end'] )
+            except:
+                returnStr = "000000000000000000000000"
+            db.thurs = returnStr
         else:
             daysString+='0'
 
         if 'friday' in request.GET:
             daysString+='1'
+            try:
+                returnStr = getHours(request.GET['friday-start'], request.GET['friday-end'] )
+            except:
+                returnStr = "000000000000000000000000"
+            db.fri = returnStr
         else:
             daysString+='0'
 
         if 'saturday' in request.GET:
             daysString+='1'
+            try:
+                returnStr = getHours(request.GET['saturday-start'], request.GET['saturday-end'] )
+            except:
+                returnStr = "000000000000000000000000"
+            db.sat = returnStr
         else:
             daysString+='0'
 
         if 'sunday' in request.GET:
             daysString+='1'
+            try:
+                returnStr = getHours(request.GET['sunday-start'], request.GET['sunday-end'] )
+            except:
+                returnStr = "000000000000000000000000"
+            db.sun = returnStr
         else:
             daysString+='0'
 
