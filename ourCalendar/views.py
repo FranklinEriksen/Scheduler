@@ -112,7 +112,10 @@ def insertAllIntoCalendar():
 def insertOnlyNameIntoCalendar(name):
     Event.objects.all().delete()
     for x in CalculatedCalendar.objects.all():
-        if str(x.name) == name:
+        firstname = str(x.name)
+        if " " in str(x.name):
+            firstname = firstname[0:firstname.index(" ")]
+        if firstname == name:
             Event.objects.create(title=x.title,
                                  description=x.description,
                                  start_time=x.start_time,
