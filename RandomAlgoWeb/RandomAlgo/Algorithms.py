@@ -12,14 +12,16 @@ def runUntilCorrectWithUsers(users):
 
     foundSolution = True
     firstFoundSolution = Listholder
-    dayBuilds = [math.floor(len(users) / 2), 0, 0, 0]
+    dayBuilds = [3, 0, 0, 0]
+
     count = 0
 
     while foundSolution:
         if count % 100 == 0:
             print(count)
         dbUsers = createUsersNonRandomFromDB(copy.deepcopy(users))
-        days = createDays(numberOfDays, dayBuilds)
+        # days = createDays(numberOfDays, dayBuilds, math.floor(len(users)) / 5)
+        days = createDays(numberOfDays, dayBuilds, 1)
 
         newListHolderTry = fillDaysWithUsersFromDB(days, dbUsers)
         if areAllDaysValid(newListHolderTry):
