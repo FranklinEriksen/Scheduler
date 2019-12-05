@@ -30,6 +30,9 @@ def getHours(startTime, endTime):
 
     return str
 
+def trylogin(request):
+    return render(request,'myaccount.html')
+
 
 def availability(request):
     #this will create a new database entry
