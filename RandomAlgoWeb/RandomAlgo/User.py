@@ -1,5 +1,5 @@
 class User:
-    def __init__(self, job, ID, availableDays=None, name=None, availableHours=None):
+    def __init__(self, job, ID, availableDays, name=None, availableHours=None):
         self.job = job
         self.ID = ID
         self.workDays = []
@@ -13,9 +13,9 @@ class User:
             for day in self.workDays:
                 if day.getDayNumber() == testDay.getDayNumber():
                     return False
-        for day in self.availableDays:
-            if day.getDayNumber() == testDay.getDayNumber():
-                return True
+        test = list(self.availableDays)
+        if str(test[testDay.getDayNumber()]) == "1":
+            return True
         return False
 
     def canUserWorkHourSlotOnDay(self, dayNumber, startHour, endHour):

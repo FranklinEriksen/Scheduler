@@ -5,18 +5,17 @@ class Day:
         self.numberOfUsersRequired = numberOfUsersRequired
         self.dayNumber = dayNumber
         self.usersForTheDay = []
-        self.dayInHours = [usersPerHour] * 16
+        self.dayInHours = [usersPerHour] * 24
         self.date = startDay + dayNumber
 
     def isDayValid(self):
-        valid = True
         for x in self.numberOfUsersRequired:
             if x != 0:
-                valid = False
+                return False
         for x in self.dayInHours:
             if x != 0:
-                valid = False
-        return valid
+                return False
+        return True
 
     def doesDayNeedJob(self, jobEnum):
         if self.numberOfUsersRequired[jobEnum.value] > 0:
@@ -26,10 +25,13 @@ class Day:
 
     def doesDayNeedUsersHours(self, user):
         usersDay = user.availableHours[self.dayNumber]
-        maxCount, count, startIndex, endIndex  = 0
+        maxCount = 0
+        count = 0
+        startIndex = 0
+        endIndex = 0
         requirement = 4
-        for x in range(0, 16):
-            if usersDay[x] == "1" and self.dayInHours >= 1:
+        for x in range(0, 24):
+            if usersDay[x] == "1" and self.dayInHours[x] >= 1:
                 count += 1
             else:
                 if count > 0 and count > maxCount:
@@ -37,22 +39,23 @@ class Day:
                     count = 0
                     endIndex = x
                     startIndex = x-maxCount
+        if maxCount == 0:
+            maxCount = count
+            startIndex = 0
+            endIndex = 24
         if maxCount >= requirement:
             return True, startIndex, endIndex
         return False, startIndex, endIndex
 
-
-
-
     def getDayNumber(self):
         return self.dayNumber
 
-    def addUser(self, user, startHourIndex, endHourIndex):
+    def addUser(self, user, startHourIndex, endHourIndex, day):
         self.usersForTheDay.append(user)
         user.addDay(self)
         self.numberOfUsersRequired[user.job.value] = self.numberOfUsersRequired[user.job.value] - 1
         for x in range(startHourIndex, endHourIndex):
-            self.dayInHours[x] -= 1
+            day.dayInHours[x] -= 1
 
 
     def usersForTheDayToString(self):
