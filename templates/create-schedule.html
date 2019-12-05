@@ -1,43 +1,14 @@
-<!DOCTYPE html>
+{% extends "company-base.html" %}
 
-<html>
-<head>
+{% block title %}Create Schedule{% endblock %}
 
-<head>
+{% block mainbody %}
+<h2>Make a schedule using current employees here.</h2>
 
-<title>Schedule</title>
-<base href="homepage.html">
-<link rel='stylesheet' href='../static/css/style.css'>
-<!-- <link rel="stylesheet" href="{% static '/css/style.css' %}"> -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>
-
-<body>
-
-<header>
-	<img src="../static/img/logo2.png" alt="SmartSchedule">
-	<a href=''>Log Out</a> <!-- TODO: Update this link -->
-</header>
-
-<div class='header2'>
-	<a href=''>Manage Employees</a> | 
-	<a href=''>Create Schecdule</a> |  
-	<a href=''>View Schedule</a>
-</div>
-
-<div class='main'>
-
-
-
-</div>
-
-</html>
-<body>
-
-
-
-
-</body>
-</html>
+<form action="../createScedule" method="createScedule">
+	{% for d in days %}
+		{{ d }}: <input type="number" name="{{ d }}"><br/>
+	{% endfor %}
+	<input type="submit" class="link">Create Schedule</input>
+</form>
+{% endblock %}
