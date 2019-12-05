@@ -214,7 +214,12 @@ class myAccount(generic.CreateView):
 
     def get_context_data(self, **kwargs):
         print("HERE IS THE CURRENT USERNMAE: ", )
-        firstname = currentUser.objects.latest('currentUsername').currentUsername
+        # firstname = currentUser.objects.latest('currentUsername').currentUsername
+        test = currentUser.objects.all()
+
+        for x in test:
+            firstname = x.currentUsername
+
         lastname = ''
         role = "ROLE"
         context= {

@@ -42,7 +42,11 @@ class CalendarViewSingleUser(generic.ListView):
     template_name = 'ourCalendar/calendar.html'
 
     def get_context_data(self, **kwargs):
-        user = currentUser.objects.latest('currentUsername').currentUsername
+
+        for x in currentUser.objects.all():
+            user = x.currentUsername
+
+        # user = currentUser.objects.latest('currentUsername').currentUsername
         insertOnlyNameIntoCalendar(user)
         # insertAllIntoCalendar()
         # print((self.request.user))
