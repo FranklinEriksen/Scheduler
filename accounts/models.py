@@ -5,8 +5,14 @@ from django.db.models import CharField, Model
 
 
 class empInfo(models.Model):
-    Name = models.CharField(max_length=300)
-    Password = models.CharField(max_length=300)
+    Name = models.CharField(max_length=300, default='')
+    Firstname = models.CharField(max_length=300, default='')
+    Lastname = models.CharField(max_length=300, default='')
+    Email = models.CharField(max_length=300, default='')
+    Companyname = models.CharField(max_length=300, default='')
+
+    Password = models.CharField(max_length=300, default = '')
+
     days = models.CharField(max_length=300, default = '11111111')
 
     #These are all strings, 24 bit binary string. Represents which hours of the day a person will be working

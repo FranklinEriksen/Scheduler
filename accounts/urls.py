@@ -5,7 +5,6 @@ from . import views
 
 
 urlpatterns = [
-    path('loginNew/', views.loginNew.as_view(), name = 'loginNew'),
     path('viewschedule/', views.viewschedule.as_view(), name = 'viewschedule'),
     path('myAccount/', views.myAccount.as_view(), name = 'myAccount'),
     path('companysignup/', views.SignUpComp.as_view(), name='signup-company'),
@@ -14,5 +13,8 @@ urlpatterns = [
     path('avail/', views.Avail.as_view(), name='avail' ),
     path('viewSched/', views.viewSched.as_view(), name='viewSched' ),
     path('submitInfo/', views.availability, name="submitInfo"),
-    path('trylogin/', views.trylogin, name="trylogin")
+    path('loginNew/', views.loginNew.as_view(), name = 'loginNew'),
+    path('signupEmpNew/', views.signupEmpNew.as_view(), name = 'signupEmpNew'),
+    path('trylogin/', views.trylogin, name="trylogin"),
+    path('trysignupEmp/', views.trysignupEmp, name="trysignupEmp")
 ]
