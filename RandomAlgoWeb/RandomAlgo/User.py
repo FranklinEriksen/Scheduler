@@ -4,7 +4,7 @@ class User:
         self.ID = ID
         self.workDays = []
         self.longestChainOfWorkDaysNumber = 0
-        self.avaibleDays = avaibleDays
+        self.availableDays = avaibleDays
         self.name = name
 
     def canUserWorkDay(self, testDay):
@@ -12,10 +12,7 @@ class User:
             for day in self.workDays:
                 if day.getDayNumber() == testDay.getDayNumber():
                     return False
-        for day in self.availableDays:
-            if day.getDayNumber() == testDay.getDayNumber():
-                return True
-        return False
+        return True
 
     def addDay(self, day):
         self.workDays.append(day)
