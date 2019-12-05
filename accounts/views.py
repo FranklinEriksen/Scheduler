@@ -55,7 +55,7 @@ def trylogin(request):
             db = currentUser()
             db.Username = inputtedName
             db.save()
-            return render(request,'myaccount.html')
+            return redirect('myAccount')
 
     return render(request,'loginNew.html')
 
