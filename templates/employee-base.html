@@ -2,17 +2,16 @@
 
 {% block title %}Employee Base Page{% endblock %}
 
-{% block htmlbase %}SmartSchedule.com{% endblock %}
-
 {% block headerlinks %}
 	<a href=''>Log Out</a> <!-- TO DO: Update this link to return to homepage -->
 {% endblock %}
 
 {% block nav %}
 	<nav>
-		<a href='{% url 'avail' %}'>My Availability</a> |
+		<a href="{% url 'welcome' %}">My Account</a>
+		<a href="{% url 'avail' %}">My Availability</a> |
 		<a href=''>My Shifts</a> | <!-- TO DO: Update this link -->
-		<a href='{% url 'ourCalendar:ourCalendar2'%}'>Schedule</a>
+		<a href="{% url 'ourCalendar:ourCalendar2'%}">Schedule</a> <!-- change this to send view-schedule.html -->
 	</nav>
 {% endblock %}
 
