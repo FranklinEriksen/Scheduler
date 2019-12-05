@@ -8,9 +8,9 @@
 
 {% block nav %}
 	<nav>
+		<a href="{% url 'myAccount' %}">My Account</a> |
 		<a href="{% url 'avail' %}">My Availability</a> |
-		<a href="{% url 'shifts' %}">My Shifts</a> | <!-- TO DO: Update this link -->
-		<a href="{% url 'schedule'%}">Schedule</a> <!-- change this to send view-schedule.html -->
+		<a href="{% url 'viewschedule'%}">Schedule</a> <!-- change this to send view-schedule.html -->
 	</nav>
 {% endblock %}
 
