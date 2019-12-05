@@ -2,6 +2,7 @@
 import unittest
 from RandomAlgoWeb.RandomAlgo.Day import *
 from RandomAlgoWeb.RandomAlgo.User import *
+from RandomAlgoWeb.RandomAlgo.Algorithms import *
 
 class UserTest(unittest.TestCase):
     def test_init(self):
@@ -29,13 +30,15 @@ class UserTest(unittest.TestCase):
         self.assertEqual(2, u.getLongestChainOfWorkDaysNumber())
         self.assertEqual(2, v.getLongestChainOfWorkDaysNumber())
 
+class UtilsTest(unittest.TestCase):
 
-class DayTest(unittest.TestCase):
-    def test_init(self):
-        Day(0, 0)
-        Day(4, 6)
-        Day(-1, 0) # should fail
-        Day(0, -1) # should also fail
+    def runSomeTimes(self):
+        runXTimes(100)
+
+    def testRunUntilCorrect(self):
+        lh = runUntilCorrect()
+        print(lh.days)
+        print(lh.users)
 
 if __name__ == '__main__':
     unittest.main()

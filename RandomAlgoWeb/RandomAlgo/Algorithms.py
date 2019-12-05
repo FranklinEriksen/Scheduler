@@ -5,10 +5,10 @@ from RandomAlgoWeb.RandomAlgo.Utils import createUsersNonRandomFromDB, createDay
     areAllDaysValid, createUsersNonRandom, fillDaysWithUsers
 import math
 
+numberOfDays = 7
 
 # This method runs until it finds a valid schedule, based on the users it gets from the argument.
 def runUntilCorrectWithUsers(users):
-    numberOfDays = 5
 
     foundSolution = True
     firstFoundSolution = Listholder
@@ -29,7 +29,7 @@ def runUntilCorrectWithUsers(users):
             foundSolution = False
         count += 1
 
-    print("It took " + str(count) + " tries")
+    # print("It took " + str(count) + " tries")
     return firstFoundSolution
 
 

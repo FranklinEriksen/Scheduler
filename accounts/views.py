@@ -30,6 +30,23 @@ def getHours(startTime, endTime):
 
     return str
 
+def trylogin(request):
+    return render(request,'myaccount.html')
+
+def trysignupEmp(request):
+    db = empInfo()
+
+    if request.method == 'GET':
+        db.Name = request.GET['firstname'] + request.GET['lastname']
+        db.Firstname = request.GET['firstname']
+        db.Lastname = request.GET['lastname']
+        db.Email = request.GET['email']
+        db.Companyname = request.GET['companyname']
+        db.Password = request.GET['password']
+        db.save()
+
+    return render(request,'myaccount.html')
+
 
 def availability(request):
     #this will create a new database entry
@@ -145,7 +162,7 @@ class ViewSchedEmp(generic.CreateView):
         print("HERE IS THE NAME", Name)
         context= {
             'Name': Name,
-            }
+        }
         return context
 
 class Avail(generic.CreateView):
@@ -157,3 +174,34 @@ class viewSched(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('viewSched')
     template_name = 'ourCalendar/calendar.html'
+
+class loginNew(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('loginNew')
+    template_name = 'loginNew.html'
+
+class myAccount(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('myAccount')
+    template_name = 'myaccount.html'
+
+    def get_context_data(self, **kwargs):
+        firstname = "FIRSTNAME"
+        lastname = "LASTNAME"
+        role = "ROLE"
+        context= {
+            'firstname': firstname,
+            'lastname' : lastname,
+            'role' : role,
+        }
+        return context
+
+class viewschedule(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('viewschedule')
+    template_name = 'view-schedule.html'
+
+class signupEmpNew(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('signupEmpNew')
+    template_name = 'signupEmpNew.html'
