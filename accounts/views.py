@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
 from .models import empInfo
+from .models import currentUser
 from RandomAlgoWeb.models import Shift as Shift
 
 import ourCalendar
@@ -43,13 +44,15 @@ def getHours(startTime, endTime):
     return str
 
 def trylogin(request):
-    db = empInfo()
 
     if request.method == 'GET':
         inputtedName = request.GET['username']
-        dbObject = empInfo.objects.get(Username = inputtedName)
-        print("HERE IS THE THING", dbObject)
+        try:
+            dbObject = empInfo.objects.get(Username = inputtedName)
+        except:
+            return render(request,'loginNew.html')
         if dbObject.Password == request.GET['password']:
+            currUsername = inputtedName
             return render(request,'myaccount.html')
 
     return render(request,'loginNew.html')
@@ -209,8 +212,9 @@ class myAccount(generic.CreateView):
     template_name = 'myaccount.html'
 
     def get_context_data(self, **kwargs):
-        firstname = self.request.user.first_name
-        lastname = self.request.user.last_name
+        print("HERE IS THE CURRENT USERNMAE: ", currUsername)
+        firstname = ''
+        lastname = ''
         role = "ROLE"
         context= {
             'firstname': firstname,

@@ -25,6 +25,9 @@ class empInfo(models.Model):
     sat = models.CharField(max_length=24, default = '000000000000000000000000')
     sun = models.CharField(max_length=24, default = '000000000000000000000000')
 
+class currentUser(models.Model):
+    currentUsername = models.CharField(max_length=300, default='')
+
 # class Company(User):
 #     Companyname = models.CharField(max_length=300, default='')
 #     location = models.TextField()
