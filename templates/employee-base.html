@@ -1,0 +1,19 @@
+{% extends "base-site.html" %}
+
+{% block title %}Employee Base Page{% endblock %}
+
+{% block headerlinks %}
+	<a href=''>Log Out</a> <!-- TO DO: Update this link to return to homepage -->
+{% endblock %}
+
+{% block nav %}
+	<nav>
+		<a href="{% url 'avail' %}">My Availability</a> |
+		<a href="{% url 'shifts' %}">My Shifts</a> | <!-- TO DO: Update this link -->
+		<a href="{% url 'schedule'%}">Schedule</a> <!-- change this to send view-schedule.html -->
+	</nav>
+{% endblock %}
+
+{% block mainbody %}
+	block mainbody not overriden
+{% endblock %}
