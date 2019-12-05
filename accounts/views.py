@@ -228,6 +228,7 @@ class viewschedule(generic.CreateView):
             'days': days,
             'working': working
         }
+        return context
 
 class signupEmpNew(generic.CreateView):
     form_class = UserCreationForm
