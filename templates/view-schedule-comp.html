@@ -12,10 +12,10 @@
 		{% endfor %}
 	</tr>
 	<tr>
-		{% for d in days %}
+		{% for w in working %}
 			<th>
-				{% for e in d.employees %}
-					{{ e.name }} {{ e.hours }}<br/>
+				{% for e in w %}
+					{{ e.name }}: {{ e.start }}-{{ e.end }}<br/>
 				{% endfor %}
 			</th>
 		{% endfor %}
