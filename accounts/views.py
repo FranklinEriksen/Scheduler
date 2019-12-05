@@ -30,6 +30,9 @@ def getHours(startTime, endTime):
 
     return str
 
+def trylogin(request):
+    return render(request,'myaccount.html')
+
 
 def availability(request):
     #this will create a new database entry
@@ -158,4 +161,28 @@ class viewSched(generic.CreateView):
     success_url = reverse_lazy('viewSched')
     template_name = 'ourCalendar/calendar.html'
 
+class loginNew(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('loginNew')
+    template_name = 'loginNew.html'
 
+class myAccount(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('myAccount')
+    template_name = 'myaccount.html'
+
+    def get_context_data(self, **kwargs):
+        firstname = "FIRSTNAME"
+        lastname = "LASTNAME"
+        role = "ROLE"
+        context= {
+            'firstname': firstname,
+            'lastname' : lastname,
+            'role' : role,
+        }
+        return context
+
+class viewschedule(generic.CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy('viewschedule')
+    template_name = 'view-schedule.html'

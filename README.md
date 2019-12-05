@@ -1,8 +1,22 @@
-# Scheduler
-Boys,
-Must run these in order to make the stuff work:  
-sudo apt-get install build-dep python-psycopg2  
-pip3 install psycopg2   
+# Smart Schedule Installation Guide
+
+## First make sure you have Pip installed (Current version is pip3)
+
+```sudo apt-get install python3 python3-pip```
+
+## Next Use Pip3 to install Django
+
+```pip3 install Django```
+
+## Clone this repository to your local system
+
+```git clone https://github.com/FranklinEriksen/Scheduler.git```
+
+## Finally launch Smart Schedule 
+
+To do this navigate to the WebApp Folder in the Scheduler folder and run the following command
+
+```python3 manage.py runserver```
 
 Use these command to update DB <br/>
 ```python manage.py migrate --run-syncdb ```<br/>

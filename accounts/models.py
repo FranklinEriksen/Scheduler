@@ -3,7 +3,7 @@ from django.db import models
 #models.py File
 class User(models.Model):
     Name = models.CharField(max_length=300)
-    pwhash = models.IntegerField()
+    Password = models.IntegerField()
 
 class empInfo(User):
     days = models.CharField(max_length=300, default = '11111111')
