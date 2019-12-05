@@ -79,13 +79,14 @@ def trysignupEmp(request):
 def availability(request):
     #this will create a new database entry
     daysString = ''
-    db=empInfo() # new data base instance
+    currUserName = currentUser.objects.latest('currentUsername').currentUsername
+    db = empInfo.objects.get(Username = currUserName)
 
     #request.get is a dictionary
     if request.method == 'GET':
         if 'namebox' in request.GET: #namebox will only be in the request if there was text inside of it
             print(request.GET['namebox']) #for testing purposes, we print the name here
-            db.Name = (request.GET['namebox']) #set the correct field in the database
+            #db.Name = (request.GET['namebox']) #set the correct field in the database
 
         #Now, for each day of the week, add the number 1 if the person is working on that particular day
         #Will end up with a binary corresponding to the days
