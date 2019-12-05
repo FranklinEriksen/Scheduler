@@ -8,7 +8,7 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from .models import empInfo
+from accounts.models import empInfo
 
 import ourCalendar
 
@@ -31,13 +31,24 @@ def getHours(startTime, endTime):
     return str
 
 def trylogin(request):
-    return render(request,'myaccount.html')
+    db = empInfo()
+
+    if request.method == 'GET':
+        inputtedName = request.GET['username']
+        dbObject = empInfo.objects.get(Username = inputtedName)
+        print("HERE IS THE THING", dbObject)
+        if dbObject.Password == request.GET['password']:
+            return render(request,'myaccount.html')
+
+    return render(request,'loginNew.html')
+
 
 def trysignupEmp(request):
     db = empInfo()
 
     if request.method == 'GET':
-        db.Name = request.GET['firstname'] + request.GET['lastname']
+        db.Name = request.GET['firstname'] + " " + request.GET['lastname']
+        db.Username = request.GET['username']
         db.Firstname = request.GET['firstname']
         db.Lastname = request.GET['lastname']
         db.Email = request.GET['email']
