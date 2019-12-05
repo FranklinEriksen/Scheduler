@@ -7,6 +7,7 @@ class User:
         self.availableDays = availableDays
         self.name = name
         self.availableHours = availableHours
+        self.eachDayInHours = []
 
     def canUserWorkDay(self, testDay):
         if len(self.workDays) != 0:
@@ -41,3 +42,7 @@ class User:
                 counter = 0
         self.longestChainOfWorkDaysNumber = maxCounter
         return self.longestChainOfWorkDaysNumber
+
+    def setEachDayWorkHours(self, dayNumber, startHourIndex, endHourIndex):
+        self.eachDayInHours.append([dayNumber, startHourIndex, endHourIndex])
+

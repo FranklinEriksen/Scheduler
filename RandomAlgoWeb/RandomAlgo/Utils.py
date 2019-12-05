@@ -77,7 +77,7 @@ def fillDaysWithUsersFromDB(days, users):
 
 
 # Creates a list of days, each with copy of how many employees it needs for the day.
-def createDays(numberOfDays, dayBuilds, usersPerHour=0):
+def createDays(numberOfDays, dayBuilds, usersPerHour):
     days = []
     for i in range(numberOfDays):
         days.append(Day(i, copy.deepcopy(dayBuilds), usersPerHour))

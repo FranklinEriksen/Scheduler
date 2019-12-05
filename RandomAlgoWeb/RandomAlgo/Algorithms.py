@@ -12,7 +12,7 @@ def runUntilCorrectWithUsers(users):
 
     foundSolution = True
     firstFoundSolution = Listholder
-    dayBuilds = [1, 0, 0, 0]
+    dayBuilds = [3, 0, 0, 0]
 
     count = 0
 

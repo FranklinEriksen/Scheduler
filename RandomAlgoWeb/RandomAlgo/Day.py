@@ -1,4 +1,4 @@
-startDay = 11
+startDay = 9
 
 class Day:
     def __init__(self, dayNumber, numberOfUsersRequired, usersPerHour=0):
@@ -40,9 +40,9 @@ class Day:
                     endIndex = x
                     startIndex = x-maxCount
         if maxCount == 0:
-            maxCount = count
-            startIndex = 0
             endIndex = 24
+            startIndex = endIndex - count
+            maxCount = count
         if maxCount >= requirement:
             return True, startIndex, endIndex
         return False, startIndex, endIndex
@@ -56,6 +56,7 @@ class Day:
         self.numberOfUsersRequired[user.job.value] = self.numberOfUsersRequired[user.job.value] - 1
         for x in range(startHourIndex, endHourIndex):
             day.dayInHours[x] -= 1
+        user.setEachDayWorkHours(day.dayNumber, startHourIndex, endHourIndex)
 
 
     def usersForTheDayToString(self):
