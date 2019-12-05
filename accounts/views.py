@@ -117,7 +117,7 @@ class ViewSchedEmp(generic.CreateView):
         print("HERE IS THE NAME", Name)
         context= {
             'Name': Name,
-            }
+        }
         return context
 
 class Avail(generic.CreateView):
@@ -129,3 +129,5 @@ class viewSched(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('viewSched')
     template_name = 'ourCalendar/calendar.html'
+
+
