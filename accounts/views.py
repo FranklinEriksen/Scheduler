@@ -8,9 +8,21 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from accounts.models import empInfo
+from .models import empInfo
+from RandomAlgoWeb.models import Shift as Shift
 
 import ourCalendar
+
+
+days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+]
 
 def getHours(startTime, endTime):
 
@@ -211,6 +223,22 @@ class viewschedule(generic.CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy('viewschedule')
     template_name = 'view-schedule.html'
+
+    def get_context_data(self, **kwargs):
+        working = []
+        for i in range(7):
+            working.append([])
+            query = Shift.objects.filter(day=0)
+            for q in query:
+                working[i].append({
+                    'name': q.name,
+                    'start': q.start_time,
+                    'end': q.end_time
+                })
+        context = {
+            'days': days,
+            'working': working
+        }
 
 class signupEmpNew(generic.CreateView):
     form_class = UserCreationForm
