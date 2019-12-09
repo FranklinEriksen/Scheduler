@@ -18,9 +18,7 @@ class CalendarView(generic.ListView):
     template_name = 'ourCalendar/calendar.html'
 
     def get_context_data(self, **kwargs):
-        # insertOnlyNameIntoCalendar(str(self.request.user))
         insertAllIntoCalendar()
-        print((self.request.user))
         context = super().get_context_data(**kwargs)
 
         d = get_date(self.request.GET.get('month', None))
@@ -45,11 +43,7 @@ class CalendarViewSingleUser(generic.ListView):
 
         for x in currentUser.objects.all():
             user = x.currentUsername
-
-        # user = currentUser.objects.latest('currentUsername').currentUsername
         insertOnlyNameIntoCalendar(user)
-        # insertAllIntoCalendar()
-        # print((self.request.user))
         context = super().get_context_data(**kwargs)
 
         d = get_date(self.request.GET.get('month', None))

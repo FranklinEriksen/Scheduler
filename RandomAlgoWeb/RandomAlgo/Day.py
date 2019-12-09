@@ -1,5 +1,7 @@
 startDay = 9
 
+
+#The day object. Consists of all of the information used by each individual day.
 class Day:
     def __init__(self, dayNumber, numberOfUsersRequired, usersPerHour=0):
         self.numberOfUsersRequired = numberOfUsersRequired
@@ -8,6 +10,7 @@ class Day:
         self.dayInHours = [usersPerHour] * 24
         self.date = startDay + dayNumber
 
+#   Checks if the current day setup is viable.
     def isDayValid(self):
         for x in self.numberOfUsersRequired:
             if x != 0:
@@ -17,12 +20,14 @@ class Day:
                 return False
         return True
 
+#   Does this day need another user with that specific job
     def doesDayNeedJob(self, jobEnum):
         if self.numberOfUsersRequired[jobEnum.value] > 0:
             return True
         else:
             return False
 
+#   Does the day need another user with these hours?
     def doesDayNeedUsersHours(self, user):
         usersDay = user.availableHours[self.dayNumber]
         maxCount = 0
@@ -50,6 +55,7 @@ class Day:
     def getDayNumber(self):
         return self.dayNumber
 
+#   Adds the user to the day as a worker, and updates the user aswell.
     def addUser(self, user, startHourIndex, endHourIndex, day):
         self.usersForTheDay.append(user)
         user.addDay(self)
@@ -58,7 +64,7 @@ class Day:
             day.dayInHours[x] -= 1
         user.setEachDayWorkHours(day.dayNumber, startHourIndex, endHourIndex)
 
-
+#   Return all who works this day
     def usersForTheDayToString(self):
         string = ""
         for x in self.usersForTheDay:

@@ -1,3 +1,5 @@
+
+# The user object. Consists of all of the information used by each individual user. Also contains a list of all days each user is going to work.
 class User:
     def __init__(self, job, ID, availableDays, name=None, availableHours=None):
         self.job = job
@@ -9,6 +11,8 @@ class User:
         self.availableHours = availableHours
         self.eachDayInHours = []
 
+
+#   Check to see if the current worker can work the selected day
     def canUserWorkDay(self, testDay):
         if len(self.workDays) != 0:
             for day in self.workDays:
@@ -19,6 +23,8 @@ class User:
             return True
         return False
 
+
+#   Check to see if the user can work in the specified hours
     def canUserWorkHourSlotOnDay(self, dayNumber, startHour, endHour):
         theDay = self.availableHours[dayNumber]
         for x in range(startHour, endHour):
@@ -27,9 +33,12 @@ class User:
         return True
 
 
+#   Add the day to the users days
     def addDay(self, day):
         self.workDays.append(day)
 
+
+#   What is the longest chain of working days. Is used to make sure no user is working more than a set amount of days in row.
     def getLongestChainOfWorkDaysNumber(self):
         maxCounter = 0
         counter = 0
@@ -43,6 +52,8 @@ class User:
         self.longestChainOfWorkDaysNumber = maxCounter
         return self.longestChainOfWorkDaysNumber
 
+
+#   Tells the user which days they are gonna work.
     def setEachDayWorkHours(self, dayNumber, startHourIndex, endHourIndex):
         self.eachDayInHours.append([dayNumber, startHourIndex, endHourIndex])
 

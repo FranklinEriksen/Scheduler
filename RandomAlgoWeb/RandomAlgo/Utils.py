@@ -33,7 +33,6 @@ def fillDaysWithUsers(days, users):
                 day.addUser(tempUser)
             tempUsers.remove(tempUser)
 
-            # print(day.numberOfUsersRequired)
             if day.isDayValid():
                 usersRemaining = False
             elif len(tempUsers) <= 0:
@@ -61,18 +60,12 @@ def fillDaysWithUsersFromDB(days, users):
                 day.addUser(tempUser, dayNeedsOfUser[1], dayNeedsOfUser[2], day)
             tempUsers.remove(tempUser)
 
-            # print(day.numberOfUsersRequired)
             if day.isDayValid():
                 usersRemaining = False
             elif len(tempUsers) <= 0:
                 usersRemaining = False
 
     listHolder = Listholder(days, users)
-
-    # for x in listHolder.days:
-    #     print("Utils = ")
-    #     print(x.usersForTheDay)
-
     return listHolder
 
 

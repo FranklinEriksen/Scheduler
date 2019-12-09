@@ -213,8 +213,6 @@ class myAccount(generic.CreateView):
     template_name = 'myaccount.html'
 
     def get_context_data(self, **kwargs):
-        print("HERE IS THE CURRENT USERNMAE: ", )
-        # firstname = currentUser.objects.latest('currentUsername').currentUsername
         test = currentUser.objects.all()
 
         for x in test:

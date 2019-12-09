@@ -18,6 +18,9 @@ To do this navigate to the WebApp Folder in the Scheduler folder and run the fol
 
 ```python3 manage.py runserver```
 
+
+## Extra information
+
 Use these command to update DB <br/>
 ```python manage.py migrate --run-syncdb ```<br/>
 ```python manage.py makemigrations```

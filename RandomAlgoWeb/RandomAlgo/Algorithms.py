@@ -20,7 +20,6 @@ def runUntilCorrectWithUsers(users):
         if count % 100 == 0:
             print(count)
         dbUsers = createUsersNonRandomFromDB(copy.deepcopy(users))
-        # days = createDays(numberOfDays, dayBuilds, math.floor(len(users)) / 5)
         days = createDays(numberOfDays, dayBuilds, 1)
 
         newListHolderTry = fillDaysWithUsersFromDB(days, dbUsers)
@@ -29,7 +28,6 @@ def runUntilCorrectWithUsers(users):
             foundSolution = False
         count += 1
 
-    # print("It took " + str(count) + " tries")
     return firstFoundSolution
 
 
@@ -41,7 +39,6 @@ def runXTimes(x):
 
     dayBuilds = [1, 1, 1, 1]
     userBuilds = [2, 2, 2, 2]
-    numberOfUsers = 8
     for i in range(x):
         nonRandomUsers = createUsersNonRandom(copy.deepcopy(userBuilds))
         days = createDays(numberOfDays, dayBuilds)
@@ -49,7 +46,6 @@ def runXTimes(x):
         newListHolderTry = fillDaysWithUsers(days, nonRandomUsers)
         if areAllDaysValid(newListHolderTry):
             correctResults.append(newListHolderTry)
-        print(i)
     print("We have " + str(len(correctResults)) + " correct results")
 
 
@@ -57,7 +53,6 @@ def runUntilCorrect():
     numberOfDays = 5
     dayBuilds = [1, 1, 1, 1]
     userBuilds = [2, 2, 2, 2]
-    numberOfUsers = 8
 
     foundSolution = True
     firstFoundSolution = Listholder
